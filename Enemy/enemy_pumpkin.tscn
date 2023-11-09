@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://58q1a40gucxq"]
+
+[ext_resource type="Script" path="res://Enemy/enemy_pumpkin.gd" id="1_m44yj"]
+[ext_resource type="Script" path="res://Enemy/enemy_specific_control1.gd" id="2_jtvue"]
+[ext_resource type="PackedScene" uid="uid://dxjjbxatjnhkf" path="res://Enemy/pumpkin.glb" id="2_s8thl"]
+[ext_resource type="AudioStream" uid="uid://duqxivbhfe0dd" path="res://Enemy/pumpkin_sound_death3.wav" id="4_6kgp3"]
+[ext_resource type="AudioStream" uid="uid://cf5xlgipqbyfk" path="res://Enemy/pumpkin_sound_death5.wav" id="5_etc58"]
+[ext_resource type="AudioStream" uid="uid://dwa8oyyqstieh" path="res://Enemy/636945__instinctual777__grass-rustling_edited.wav" id="6_ehwwe"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e7agx"]
+radius = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_v8ilt"]
+
+[node name="EnemyPumpkin" type="RigidBody3D" groups=["deadly", "shootable"]]
+mass = 14.0
+max_contacts_reported = 2
+contact_monitor = true
+linear_damp = 1.0
+script = ExtResource("1_m44yj")
+
+[node name="SpecificControl" type="Node" parent="."]
+script = ExtResource("2_jtvue")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_e7agx")
+
+[node name="pumpkin" parent="." instance=ExtResource("2_s8thl")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.921569, 0.47451, 0, 1)
+light_energy = 0.315
+distance_fade_enabled = true
+omni_range = 2.23099
+
+[node name="DieSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_6kgp3")
+volume_db = 5.0
+bus = &"SFX"
+
+[node name="DieSound2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_etc58")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="RollSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_ehwwe")
+volume_db = -5.0
+max_distance = 20.0
+bus = &"SFX"
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 45.0
+
+[node name="OnGroundDetectArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OnGroundDetectArea"]
+shape = SubResource("SphereShape3D_v8ilt")
+
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

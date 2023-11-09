@@ -1,0 +1,251 @@
+[gd_scene load_steps=8 format=3 uid="uid://6nm2bme800h3"]
+
+[ext_resource type="Script" path="res://MainMenu/SettingsScript.gd" id="1_an66p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_30los"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ptdh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p7qir"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s0tcm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wh1qf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wm1pu"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_an66p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.403
+anchor_right = 0.597
+anchor_bottom = 1.0
+offset_left = 0.159973
+offset_right = -0.160034
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.905882, 0.32549, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="Spacer1" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Label5" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "mouse sensitivity:"
+horizontal_alignment = 1
+
+[node name="MouseSensitivitySlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = 0.02
+max_value = 0.6
+step = 0.01
+value = 0.2
+
+[node name="Spacer5" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Label4" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "master volume:"
+horizontal_alignment = 1
+
+[node name="MasterVolumeSlider" type="HSlider" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+min_value = -45.0
+max_value = 0.0
+value = -20.0
+
+[node name="Label7" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "SFX volume:"
+horizontal_alignment = 1
+
+[node name="SFXVolumeSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = -45.0
+max_value = 0.0
+value = -20.0
+
+[node name="Label6" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "music volume:"
+horizontal_alignment = 1
+
+[node name="MusicVolumeSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = -45.0
+max_value = 0.0
+value = -20.0
+
+[node name="Spacer3" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Label3" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+
+[node name="Spacer2" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "downscaling:"
+horizontal_alignment = 1
+
+[node name="DownscalingSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = 1.0
+max_value = 6.0
+value = 1.0
+tick_count = 6
+
+[node name="FpsLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "fps: 60"
+horizontal_alignment = 1
+
+[node name="FPSSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+max_value = 6.0
+value = 5.0
+tick_count = 7
+ticks_on_borders = true
+
+[node name="Spacer4" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VSyncCheckbox" type="CheckBox" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(121.22, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_30los")
+text = "VSync"
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer/VSyncCheckbox"]
+show_behind_parent = true
+layout_mode = 2
+offset_left = 4.0
+offset_top = 10.0
+offset_right = 20.0
+offset_bottom = 26.0
+mouse_filter = 2
+
+[node name="FullscreenCheckbox" type="CheckBox" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(121.22, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_30los")
+text = "Fullscreeen"
+icon_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer/FullscreenCheckbox"]
+show_behind_parent = true
+layout_mode = 2
+offset_left = 4.0
+offset_top = 10.0
+offset_right = 20.0
+offset_bottom = 26.0
+mouse_filter = 2
+
+[node name="ShowFPSCheckbox" type="CheckBox" parent="VBoxContainer"]
+custom_minimum_size = Vector2(121.22, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_30los")
+text = "Show FPS"
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/ShowFPSCheckbox"]
+show_behind_parent = true
+layout_mode = 2
+offset_left = 4.0
+offset_top = 10.0
+offset_right = 20.0
+offset_bottom = 26.0
+mouse_filter = 2
+
+[node name="Spacer6" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Spacer8" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.905882, 0.32549, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6ptdh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_p7qir")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_s0tcm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wh1qf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wm1pu")
+text = "[back]"
+flat = true
+
+[node name="Spacer7" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Spacer9" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[connection signal="value_changed" from="VBoxContainer/MouseSensitivitySlider" to="." method="_on_master_volume_slider_2_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/DownscalingSlider" to="." method="_on_downscaling_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/FPSSlider" to="." method="_on_downscaling_slider_2_value_changed"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/VSyncCheckbox" to="." method="_on_v_sync_checkbox_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/FullscreenCheckbox" to="." method="_on_fullscreen_checkbox_toggled"]
+[connection signal="toggled" from="VBoxContainer/ShowFPSCheckbox" to="." method="_on_show_fps_checkbox_toggled"]
+[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
