@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://2ch2ptf6o4p"
+path="res://.godot/imported/title_text.obj-56967fcd7f979b7bbdfcca720cc7ea84.mesh"
+
+[deps]
+
+files=["res://.godot/imported/title_text.obj-56967fcd7f979b7bbdfcca720cc7ea84.mesh"]
+
+source_file="res://World/title_text.obj"
+dest_files=["res://.godot/imported/title_text.obj-56967fcd7f979b7bbdfcca720cc7ea84.mesh", "res://.godot/imported/title_text.obj-56967fcd7f979b7bbdfcca720cc7ea84.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

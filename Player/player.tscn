@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://dikvk81tp71bf"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_c3qhs"]
+[ext_resource type="PackedScene" uid="uid://gtik76tegghm" path="res://Weapons/handgun_1.tscn" id="2_k6d5v"]
+[ext_resource type="AudioStream" uid="uid://g16anujabdmf" path="res://Player/player_hit3.wav" id="3_u6h87"]
+[ext_resource type="AudioStream" uid="uid://brm65jp8b2yo2" path="res://Player/player_hit2.wav" id="4_ix3m8"]
+[ext_resource type="AudioStream" uid="uid://cr41hasojow0f" path="res://Player/heal_pickup.wav" id="5_4ngj4"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_p4faw"]
+radius = 0.25
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8tu1a"]
+radius = 0.25
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_my6m6"]
+radius = 0.4
+height = 2.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7qf4w"]
+radius = 5.0
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_c3qhs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_p4faw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_8tu1a")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_my6m6")
+
+[node name="EnemyEffectArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyEffectArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_7qf4w")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="ShootRaycast" type="RayCast3D" parent="Head"]
+target_position = Vector3(0, 0, -20)
+
+[node name="Flashlight" type="SpotLight3D" parent="Head"]
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 0
+spot_range = 8.19983
+spot_attenuation = 0.217638
+spot_angle = 30.7187
+
+[node name="Hand" type="Node3D" parent="Head"]
+transform = Transform3D(-0.99863, 0, -0.052336, 0, 1, 0, 0.052336, 0, -0.99863, 0.06, -0.05, -0.292)
+
+[node name="Handgun1" parent="Head/Hand" instance=ExtResource("2_k6d5v")]
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="FreeTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="HitSound1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_u6h87")
+volume_db = 20.0
+bus = &"SFX"
+
+[node name="HitSound2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ix3m8")
+volume_db = 20.0
+bus = &"SFX"
+
+[node name="HealSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_4ngj4")
+volume_db = -25.0
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="EnemyEffectArea" to="." method="_on_enemy_effect_area_body_entered"]
+[connection signal="timeout" from="FreeTimer" to="." method="_on_free_timer_timeout"]

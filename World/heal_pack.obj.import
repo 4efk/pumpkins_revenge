@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ddu5id7f06lo1"
+path="res://.godot/imported/heal_pack.obj-e6ade3db34d083c92c4a2149a7cd3bbf.mesh"
+
+[deps]
+
+files=["res://.godot/imported/heal_pack.obj-e6ade3db34d083c92c4a2149a7cd3bbf.mesh"]
+
+source_file="res://World/heal_pack.obj"
+dest_files=["res://.godot/imported/heal_pack.obj-e6ade3db34d083c92c4a2149a7cd3bbf.mesh", "res://.godot/imported/heal_pack.obj-e6ade3db34d083c92c4a2149a7cd3bbf.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
